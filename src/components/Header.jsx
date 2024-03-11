@@ -2,7 +2,7 @@ import Menu from "./Menu";
 const Header=(props)=> {
     return(
         <>
-        <header className="flex  w-full flex-row justify-around border-2 items-center ">
+        <header className="flex  w-full flex-row justify-around border-2 items-center sticky top-0 z-10 bg-white">
             
             <div className="flex flex-row">
             <img className="h-20 flex self-center " src="/MyTinerariHeaderLogo.png" alt="Logo MyTinerari" />{/*Aca va un logo */}
