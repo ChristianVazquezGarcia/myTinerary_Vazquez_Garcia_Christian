@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import getCities from "../services/citiesQueries";
+import {getCities} from "../services/citiesQueries";
 import Cards from "../components/Cards"
 import { useEffect, useState, useRef } from "react";
 

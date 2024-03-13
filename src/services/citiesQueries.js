@@ -1,6 +1,6 @@
 import axios  from 'axios'
 
-const getCities = async ()=>{
+export const getCities = async ()=>{
     try {
         const answer = await axios("http://localhost:4000/api/cities") 
         return answer.data.data
@@ -9,4 +9,11 @@ const getCities = async ()=>{
     }
 }
 
-export default getCities;
+export const getCityById = async ( id )=>{
+    try {
+        const answer = await axios("http://localhost:4000/api/cities/" + id) 
+        return answer.data.data
+    } catch (err) {
+        return {}
+    }
+}
