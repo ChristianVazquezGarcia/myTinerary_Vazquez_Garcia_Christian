@@ -22,7 +22,7 @@ const CitiesPage = () => {
     return (
         <>
             <Layout props={"gap-4"}>
-                <search className="w-[80%]">
+                <search className="w-[80%] md:py-10">
                     <input className="bg-stone-600 w-full rounded-lg text-center text-white gap-4" type="text" name="city_name" placeholder="Search your city...." ref={searchInput} onInput={handleInput} />
                 </search>
                 <div className="flex flex-wrap w-full px-12 max-md:px-4 max-md:gap-6 gap-4 justify-center">
