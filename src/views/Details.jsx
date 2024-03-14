@@ -54,13 +54,15 @@ const Details = ()=>{
    
     return(
         <>
-        <div className="w-11/12 flex flex-col justify-center items-center">
+        <div className="w-screen h-screen flex justify-center items-center">
+        <div className="w-11/12 flex flex-col justify-center items-center gap-5">
             {/*Me falta acomodar la estetica */}
-        <img className="w-full self-center" src={city.image} alt="city image" />
-        <h3>{city.name}</h3>
-        <Link to="/CitiesPage">Cities</Link>
+        <img className="w-[50%] max-md:w-[80%] self-center rounded-lg" src={city.image} alt="city image" />
+        <h3 className="font-sans text-3xl">{city.name}</h3>
+        <Link className="underline" to="/CitiesPage">Cities</Link>
         <h2>UNDER CONSTRUCTION</h2>
 
+        </div>
         </div>
         </>
     )
