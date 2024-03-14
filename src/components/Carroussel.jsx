@@ -49,7 +49,7 @@ const Carroussel = ({ props }) => {
                     <h4 className="text-3xl font-bold italic py-4">Popular MyTineraries</h4>
                     <div className="flex  w-full max-lg:gap-1 gap-4 justify-center">
                         <button className="text-3xl rounded-full" onClick={prev}>⬅</button>
-                        <div className="w-[95%] gap-x-1 max-lg:w-screen max-lg:justify-center max-md:w-screen flex flex-wrap justify-around max-lg:gap-5 ">
+                        <div className="w-[95%] gap-3 max-lg:w-screen max-lg:justify-center max-md:w-screen flex flex-wrap justify-around max-lg:gap-5  ">
                             <Cards props={capital} style={"opacity-25"} />
                             <Cards props={capital1} style={"opacity-25"} />
                             <Cards props={capital2} style={"opacity-25"} />

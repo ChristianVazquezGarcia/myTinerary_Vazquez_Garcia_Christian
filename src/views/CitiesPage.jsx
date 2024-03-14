@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import {getCities} from "../services/citiesQueries";
+import { getCities } from "../services/citiesQueries";
 import Cards from "../components/Cards"
 import { useEffect, useState, useRef } from "react";
 
@@ -27,7 +27,7 @@ const CitiesPage = () => {
                 </search>
                 <div className="flex flex-wrap w-full px-12 max-md:px-4 max-md:gap-6 gap-4 justify-center">
                     {/* imprimo */}
-                    {newCity.length > 0 ? newCity.map((capital) => <Cards key={capital.id} props={capital} style={"md:absolute animate-pulse opacity-90"} />) : <h2 className="pt-16"> City not found </h2>}
+                    {newCity.length > 0 ? newCity.map((capital) => <Cards key={capital.id} props={capital} style={"md:absolute animate-pulse opacity-90"} />) : <h2 className="py-16 px-8 max-md:text-2xl text-3xl font-bold italic font-mono border-2 flex items-center"> City not found </h2>}
                 </div>
             </Layout>
         </>
