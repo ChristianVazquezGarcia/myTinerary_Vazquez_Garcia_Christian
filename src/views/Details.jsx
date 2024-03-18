@@ -1,5 +1,5 @@
 import { Navigate, useNavigate, useParams, Link } from "react-router-dom";
-import { getCityById } from "../services/citiesQueries"
+import { getCityById, getItineraries } from "../services/citiesQueries"
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
@@ -10,11 +10,13 @@ const Details = () => {
     const [loaded, setLoaded] = useState(true)
     const navigate = useNavigate()
     useEffect(() => {
-        getCityById(params.id)
+        getItineraries(params.id)//le paso el id param al action, con el param del action bsuco en la ciudad esa si tiene itinerario
             .then((ans) => {
-
-                if (ans.name) {
-
+                console.log(ans);
+                const aux=ans.city
+                // const aux2=ans.description
+                console.log(aux);
+                if (ans!=[]) {
                     setCity(ans);
                 }
                 else {
@@ -44,6 +46,7 @@ const Details = () => {
                     <img className="w-[50%] max-md:w-[80%] self-center rounded-lg" src={city.image} alt="city image" />
                     <h3 className="font-sans text-3xl">{city.name}</h3>
                     <Link className="underline" to="/CitiesPage">Cities</Link>
+                    <h5>{city.guide}</h5>
                     <h2>UNDER CONSTRUCTION</h2>
 
                 </div>
