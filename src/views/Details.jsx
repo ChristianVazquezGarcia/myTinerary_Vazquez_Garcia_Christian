@@ -1,21 +1,28 @@
 import { Navigate, useNavigate, useParams, Link } from "react-router-dom";
 import { getCityById, getItineraries } from "../services/citiesQueries"
+import Itineries from "../components/Itineraries";
 import { useEffect, useState } from "react";
+import { useSelector } from 'react-redux';
 import Swal from "sweetalert2";
 
 const Details = () => {
 
     const params = useParams()
-    const [city, setCity] = useState({})
+    const [city, setCity] = useState([])
     const [loaded, setLoaded] = useState(true)
     const navigate = useNavigate()
+
+    //Me traigo las ciudades del store
+    const filtered = useSelector((store)=>store.cities.all)
+    console.log(filtered);
+    const cite=filtered.filter((cities)=>cities.id==params.id)
+    console.log(params.id);
+    console.log(cite);
     useEffect(() => {
-        getItineraries(params.id)//le paso el id param al action, con el param del action bsuco en la ciudad esa si tiene itinerario
+        getItineraries(params.id)//le paso el id param al axios, con el param del busco en la ciudad esa si tiene itinerario
             .then((ans) => {
                 console.log(ans);
-                const aux=ans.city
-                // const aux2=ans.description
-                console.log(aux);
+                
                 if (ans!=[]) {
                     setCity(ans);
                 }
@@ -27,7 +34,7 @@ const Details = () => {
             )
             .finally(() => setLoaded(false))
     }, [])
-
+     console.log(city);
     if (loaded) {
         return (
 
@@ -38,7 +45,23 @@ const Details = () => {
 
     }
 
+    if (city.itineraries!=0) {
+        return(
+            <div className="w-screen h-screen flex justify-center items-center bg-gray-700">
+                <div className="w-11/12 flex flex-col justify-center items-center gap-5  text-white">
+                    <img className="w-[50%] max-md:w-[80%] self-center rounded-lg" src={city.image} alt="city image" />
+                    <h3 className="font-sans text-3xl">{city.name}</h3>
+                    <Link className="underline" to="/CitiesPage">Cities</Link>
+                    <h5>{city.guide}</h5>
+                    <div className="flex gap-6 max-md:flex-col">
+                    <Itineries props = {city} />
+                    </div>
+                </div>
+            </div>
+        )
+    }
 
+//Mira querido christian, tenes errores, tales como que no estas consumiendo las ciudades del store, pues las necesitas para las imagenes, asi que traelas del store
     return (
         <>
             <div className="w-screen h-screen flex justify-center items-center bg-gray-700">
@@ -48,6 +71,7 @@ const Details = () => {
                     <Link className="underline" to="/CitiesPage">Cities</Link>
                     <h5>{city.guide}</h5>
                     <h2>UNDER CONSTRUCTION</h2>
+                    
 
                 </div>
             </div>
