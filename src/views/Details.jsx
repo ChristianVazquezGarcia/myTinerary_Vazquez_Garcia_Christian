@@ -15,7 +15,7 @@ const Details = () => {
     //Me traigo las ciudades del store
     const filtered = useSelector((store)=>store.cities.all)
     console.log(filtered);
-    const cite=filtered.filter((cities)=>cities.id==params.id)
+    const cite=filtered.filter((cities)=>cities._id==params.id)
     console.log(params.id);
     console.log(cite);
     useEffect(() => {
@@ -49,8 +49,8 @@ const Details = () => {
         return(
             <div className="w-screen h-screen flex justify-center items-center bg-gray-700">
                 <div className="w-11/12 flex flex-col justify-center items-center gap-5  text-white">
-                    <img className="w-[50%] max-md:w-[80%] self-center rounded-lg" src={city.image} alt="city image" />
-                    <h3 className="font-sans text-3xl">{city.name}</h3>
+                    <img className="w-[50%] max-md:w-[80%] self-center rounded-lg" src={cite.image} alt="city image" />
+                    <h3 className="font-sans text-3xl">{cite.name}</h3>
                     <Link className="underline" to="/CitiesPage">Cities</Link>
                     <h5>{city.guide}</h5>
                     <div className="flex gap-6 max-md:flex-col">
@@ -61,15 +61,14 @@ const Details = () => {
         )
     }
 
-//Mira querido christian, tenes errores, tales como que no estas consumiendo las ciudades del store, pues las necesitas para las imagenes, asi que traelas del store
+
     return (
         <>
             <div className="w-screen h-screen flex justify-center items-center bg-gray-700">
                 <div className="w-11/12 flex flex-col justify-center items-center gap-5  text-white">
-                    <img className="w-[50%] max-md:w-[80%] self-center rounded-lg" src={city.image} alt="city image" />
-                    <h3 className="font-sans text-3xl">{city.name}</h3>
+                    <img className="w-[50%] max-md:w-[80%] self-center rounded-lg" src={cite.image} alt="city image" />
+                    <h3 className="font-sans text-3xl">{cite.name}</h3>
                     <Link className="underline" to="/CitiesPage">Cities</Link>
-                    <h5>{city.guide}</h5>
                     <h2>UNDER CONSTRUCTION</h2>
                     
 
