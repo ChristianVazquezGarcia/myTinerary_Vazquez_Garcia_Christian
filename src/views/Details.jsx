@@ -14,10 +14,10 @@ const Details = () => {
 
     //Me traigo las ciudades del store
     const filtered = useSelector((store)=>store.cities.all)
-    console.log(filtered);
     const cite=filtered.filter((cities)=>cities._id==params.id)
-    console.log(params.id);
-    console.log(cite);
+    let cityDetail = cite.map((city)=>city.country)
+    let cityDetailImage= cite.map((city)=>city.image)
+    let citiItinierary=cite.map((city)=>city.itineraries)
     useEffect(() => {
         getItineraries(params.id)//le paso el id param al axios, con el param del busco en la ciudad esa si tiene itinerario
             .then((ans) => {
@@ -34,7 +34,6 @@ const Details = () => {
             )
             .finally(() => setLoaded(false))
     }, [])
-     console.log(city);
     if (loaded) {
         return (
 
@@ -44,13 +43,12 @@ const Details = () => {
         )
 
     }
-
-    if (city.itineraries!=0) {
+    if (citiItinierary!=0) {
         return(
-            <div className="w-screen h-screen flex justify-center items-center bg-gray-700">
+            <div className="w-screen h-auto flex flex-col justify-between items-center bg-gray-700">
+                <img className="w-[25%] max-md:w-[80%] rounded-lg" src={cityDetailImage} alt="city image" />
                 <div className="w-11/12 flex flex-col justify-center items-center gap-5  text-white">
-                    <img className="w-[50%] max-md:w-[80%] self-center rounded-lg" src={cite.image} alt="city image" />
-                    <h3 className="font-sans text-3xl">{cite.name}</h3>
+                    <h3 className="font-sans text-3xl">{cityDetail}</h3>
                     <Link className="underline" to="/CitiesPage">Cities</Link>
                     <h5>{city.guide}</h5>
                     <div className="flex gap-6 max-md:flex-col">
@@ -60,19 +58,15 @@ const Details = () => {
             </div>
         )
     }
-
-
     return (
         <>
             <div className="w-screen h-screen flex justify-center items-center bg-gray-700">
-                <div className="w-11/12 flex flex-col justify-center items-center gap-5  text-white">
-                    <img className="w-[50%] max-md:w-[80%] self-center rounded-lg" src={cite.image} alt="city image" />
-                    <h3 className="font-sans text-3xl">{cite.name}</h3>
+            <div className="w-11/12 flex flex-col justify-center items-center gap-5  text-white">
+                    <img className="w-[50%] max-md:w-[80%] self-center rounded-lg" src={cityDetailImage} alt="city image" />
+                    <h3 className="font-sans text-3xl">{cityDetail}</h3>
                     <Link className="underline" to="/CitiesPage">Cities</Link>
-                    <h2>UNDER CONSTRUCTION</h2>
-                    
-
-                </div>
+                    <h2>There are no itineraries available</h2>
+            </div>
             </div>
         </>
     )
