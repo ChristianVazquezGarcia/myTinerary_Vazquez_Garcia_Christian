@@ -2,7 +2,7 @@
 import { Bounce, toast } from "react-toastify";
 
 const success = (msg) => toast.success(msg, {
-    position: "top-right",
+    position: "top-center",
     autoClose: 1500,
     hideProgressBar: true,
     closeOnClick: true,

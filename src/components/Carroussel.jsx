@@ -44,7 +44,7 @@ const Carroussel = ({ props }) => {
 
     return (
         <>
-            <div className="flex justify-center gap-4 max-lg:w-[80%] ">
+            <div className="flex justify-center gap-4 max-lg:w-[80%] pb-16 ">
                 <div className="flex flex-col w-full items-center">
                     <h4 className="text-3xl font-bold italic py-4">Popular MyTineraries</h4>
                     <div className="flex  w-full max-lg:gap-1 gap-4 justify-center">

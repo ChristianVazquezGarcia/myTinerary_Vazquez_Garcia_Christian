@@ -15,12 +15,12 @@ const Register = () => {
         country: "",
       });
       const [countries, setCountries] = useState([]);
-      //const navigate = useNavigate();
+      const navigate = useNavigate();
       useEffect(() => {
           getAllCountries().then(setCountries);
         }, []);
         
-    console.log(countries);
+    
       function handleInput(e) {
         const name = e.target.name;
         const value = e.target.value;
@@ -37,7 +37,7 @@ const Register = () => {
         }
         authQueries.register(aux).then((response) => {
           if (response.status == 201) {
-            alerts.success("Cuenta creada, puede logear");
+            alerts.success("Account created, you can login now");
             navigate("/login");
           } else {
             alerts.error(response.statusMsg);
@@ -51,9 +51,9 @@ const Register = () => {
     return (
         <Layout>
 
-            <main className="grow pt-20 flex flex-col gap-5 justify-center items-center bg-slate-400 w-[60%]">
-                <h2 className="text-4xl font-bold">Registro</h2>
-                <div className="border w-10/12 py-5 flex flex-col items-center h-fit">
+            <main className="grow pt-20 flex flex-col gap-5 justify-center items-center bg-slate-100 w-[60%] max-md:w-full">
+                <h2 className="text-4xl font-bold">Register</h2>
+                <div className="border w-10/12 py-5 flex flex-col items-center h-fit bg-gray-600 rounded-lg">
                     <form
                         onSubmit={handleSubmit}
                         onInput={handleInput}
@@ -88,7 +88,7 @@ const Register = () => {
                             name="country"
                             defaultValue={formData.country}
                         >   
-                        <option value="none" selected disabled>
+                        <option value=" none " >
                             Select your country
                         </option>
                             {countries.length > 0 &&
